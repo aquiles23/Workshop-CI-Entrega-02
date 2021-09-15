@@ -13,6 +13,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    image: backend
     ports:
       - '3000:3000'
     env_file: .env
@@ -25,6 +26,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    image: frontend
     ports:
       - '3030:3000'
     networks:
