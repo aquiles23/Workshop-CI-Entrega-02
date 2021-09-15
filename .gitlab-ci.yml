@@ -1,0 +1,13 @@
+
+services:
+  - docker:dind
+
+stages:
+  - build
+  - test
+  - pushImage
+  
+backend_build:
+  stage: build
+  # image: postgres
+  script: docker build ./backend/
