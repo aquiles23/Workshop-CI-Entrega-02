@@ -21,3 +21,11 @@ backend_test:
     - cd backend
     - npm install
   script: npm run unittest
+
+frontend_test:
+  stage: test
+  image: node:14
+  before_script:
+    - cd frontend
+    - yarn
+  script: yarn test
