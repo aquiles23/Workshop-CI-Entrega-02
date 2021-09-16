@@ -11,3 +11,7 @@ backend_build:
   stage: build
   # image: postgres
   script: docker build ./backend/
+
+frontend_build:
+  stage: build
+  script: docker build ./frontend/
