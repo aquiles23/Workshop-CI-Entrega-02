@@ -8,11 +8,13 @@ default:
     - docker:latest
 
 backend_build:
+  image: docker:dind
   stage: build
   # image: postgres
   script: docker build ./backend/
 
 frontend_build:
+  image: docker:dind
   stage: build
   script: docker build ./frontend/
 
