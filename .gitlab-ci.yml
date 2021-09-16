@@ -15,3 +15,11 @@ backend_build:
 frontend_build:
   stage: build
   script: docker build ./frontend/
+
+backend_test:
+  stage: test
+  script: echo "example"
+
+backend_pushImage:
+  stage: pushImage
+  script: echo "example 2"
