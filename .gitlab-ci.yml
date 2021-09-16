@@ -16,4 +16,8 @@ frontend_build:
 
 backend_test:
   stage: test
-  script: echo "example"
+  image: node:lts
+  before_script:
+    - cd backend
+    - npm install
+  script: npm run unittest
