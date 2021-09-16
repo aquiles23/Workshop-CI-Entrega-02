@@ -1,12 +1,12 @@
-
-services:
-  - docker:dind
-
 stages:
   - build
   - test
   - pushImage
-  
+
+default:
+  services:
+    - docker:latest
+
 backend_build:
   stage: build
   # image: postgres
