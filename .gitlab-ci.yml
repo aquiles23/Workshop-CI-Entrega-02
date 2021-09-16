@@ -1,18 +1,25 @@
 stages:
   - build
   - test
+
 image: docker:latest
 services:
   - docker:dind
 
+before_script:
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
 
 backend_build:
   stage: build
-  script: docker build ./backend/
+  script: 
+    - docker build ./backend/
+    - docker push backend_image:latest
 
 frontend_build:
   stage: build
-  script: docker build ./frontend/
+  script: 
+    - docker build ./frontend/
+    - docker push frontend_image:latest
 
 backend_test:
   stage: test
