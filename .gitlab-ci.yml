@@ -1,26 +1,22 @@
 stages:
   - build
   - test
-  - pushImage
 
-image: docker:latest
-
-services:
-  - docker:dind
 
 backend_build:
   stage: build
-  # image: postgres
+  image: docker:latest
+  services:
+    - docker:dind
   script: docker build ./backend/
 
 frontend_build:
   stage: build
+  image: docker:latest
+  services:
+    - docker:dind
   script: docker build ./frontend/
 
 backend_test:
   stage: test
   script: echo "example"
-
-backend_pushImage:
-  stage: pushImage
-  script: echo "example 2"
