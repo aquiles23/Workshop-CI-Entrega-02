@@ -13,13 +13,13 @@ backend_build:
   stage: build
   script: 
     - docker build ./backend/
-    - docker push aquiles23/backend_image:latest
+    - docker push aquiles23/backend_image
 
 frontend_build:
   stage: build
   script: 
     - docker build ./frontend/
-    - docker push aquiles23/frontend_image:tagname
+    - docker push aquiles23/frontend_image
 
 backend_test:
   stage: test
