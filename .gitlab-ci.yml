@@ -6,12 +6,11 @@ image: docker:latest
 services:
   - docker:dind
 
-before_script:
-  - docker login -u $DOCKER_USER -p $DOCKER_PASS
 
 backend_build:
   stage: build
   before_script:
+    - docker login -u $DOCKER_USER -p $DOCKER_PASS
     - docker pull aquiles23/backend_image
   script: 
     - docker build --cache-from aquiles23/backend_image ./backend/
@@ -20,7 +19,8 @@ backend_build:
 frontend_build:
   stage: build
   before_script:
-    - docker push aquiles23/frontend_image
+    - docker login -u $DOCKER_USER -p $DOCKER_PASS  
+    - docker pull aquiles23/frontend_image
   script: 
     - docker build --cache-from aquiles23/frontend_image ./frontend/
     - docker push aquiles23/frontend_image
