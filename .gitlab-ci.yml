@@ -11,14 +11,18 @@ before_script:
 
 backend_build:
   stage: build
+  before_script:
+    - docker pull aquiles23/backend_image
   script: 
-    - docker build ./backend/
+    - docker build --cache-from aquiles23/backend_image ./backend/
     - docker push aquiles23/backend_image
 
 frontend_build:
   stage: build
+  before_script:
+    - docker push aquiles23/frontend_image
   script: 
-    - docker build ./frontend/
+    - docker build --cache-from aquiles23/frontend_image ./frontend/
     - docker push aquiles23/frontend_image
 
 backend_test:
